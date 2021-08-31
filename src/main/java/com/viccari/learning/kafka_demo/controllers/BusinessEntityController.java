@@ -6,6 +6,8 @@ import com.viccari.learning.kafka_demo.models.BusinessEntity;
 import com.viccari.learning.kafka_demo.payloads.BusinessPayload;
 import com.viccari.learning.kafka_demo.services.KafkaPublisherService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,7 +26,7 @@ public class BusinessEntityController extends SimpleController{
 
     @GetMapping(value = "/healthz", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SimpleResponseBody> healthz(){
-        log.info("Listening!");
+        log.info("health_check_ok");
         return SimpleResponseBody.build("listening!", HttpStatus.OK);
     }
 
@@ -34,8 +36,12 @@ public class BusinessEntityController extends SimpleController{
         var businessEntity = new BusinessEntity();
         businessEntity.setId(payload.getId());
         businessEntity.setDescription(payload.getDescription());
+        businessEntity.setVersion(payload.getVersion());
 
-        kafkaPublisherService.sendWithSynchronous(BusinessEntity.BUSINESS_TOPIC, businessEntity.toString());
-        return SimpleResponseBody.build("request_ok", HttpStatus.OK);
+        var result = kafkaPublisherService.sendWithSynchronous(BusinessEntity.BUSINESS_TOPIC, businessEntity.toString());
+        return SimpleResponseBody.build(
+            ToStringBuilder.reflectionToString(result, ToStringStyle.JSON_STYLE),
+            HttpStatus.OK
+        );
     }
 }
