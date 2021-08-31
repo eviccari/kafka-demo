@@ -1,20 +1,14 @@
-package com.viccari.learning.kafka_demo.models;
+package com.viccari.learning.kafka_demo.payloads;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.io.Serializable;
 
-public class BusinessEntity implements Serializable {
+public class BusinessPayload implements Serializable {
 
-    private static final long serialVersionUID = -6662954551983436723L;
     private String id;
     private String description;
-    private String version;
-    public static final String BUSINESS_TOPIC = "business-topic";
-
-    public BusinessEntity() {
-    }
 
     public String getId() {
         return id;
@@ -30,14 +24,6 @@ public class BusinessEntity implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
     }
 
     @Override

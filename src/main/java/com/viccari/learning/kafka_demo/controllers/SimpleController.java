@@ -17,6 +17,11 @@ public class SimpleController {
 
     @ExceptionHandler({UnprocessableEntityException.class, InternalServerErrorException.class})
     public ResponseEntity<SimpleResponseBody> handleHttpException(HttpServletRequest request, HttpException exception){
+
+        if(exception.printableStack()){
+            exception.printStackTrace();
+        }
+
         return new SimpleResponseBody()
             .withMessage(exception.getMessage())
             .withHttpStatus(exception.getHttpStatus())

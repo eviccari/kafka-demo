@@ -7,3 +7,10 @@ logging:
   level:
     root: INFO
 
+app:
+    params:
+      kafka:
+        bootstrapAddress: localhost:9092
+        topics:
+          businessTopic: business-topic
+

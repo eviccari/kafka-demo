@@ -20,5 +20,16 @@ public interface HttpException {
      */
     String getMessage();
 
+    /**
+     * Flag to print a stack trace from error
+     * @return boolean validation
+     */
+    boolean printableStack();
+
+    /**
+     * To print stack trace error
+     */
+    void printStackTrace();
+
 
 }
