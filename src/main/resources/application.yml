@@ -1,0 +1,9 @@
+server:
+  servlet:
+    contextPath: /app
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+
