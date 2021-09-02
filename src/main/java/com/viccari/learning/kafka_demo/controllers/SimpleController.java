@@ -1,5 +1,6 @@
 package com.viccari.learning.kafka_demo.controllers;
 
+import com.viccari.learning.kafka_demo.exceptions.BadRequestException;
 import com.viccari.learning.kafka_demo.exceptions.HttpException;
 import com.viccari.learning.kafka_demo.exceptions.InternalServerErrorException;
 import com.viccari.learning.kafka_demo.exceptions.UnprocessableEntityException;
@@ -15,7 +16,7 @@ public class SimpleController {
     @Autowired
     HttpServletRequest request;
 
-    @ExceptionHandler({UnprocessableEntityException.class, InternalServerErrorException.class})
+    @ExceptionHandler({UnprocessableEntityException.class, InternalServerErrorException.class, BadRequestException.class})
     public ResponseEntity<SimpleResponseBody> handleHttpException(HttpServletRequest request, HttpException exception){
 
         if(exception.printableStack()){

@@ -52,7 +52,7 @@ public class KafkaPublisherService {
 
     /**
      * To verify if the message is valid
-     * @param message
+     * @param message - payload of message
      * @return boolean validation
      */
     private boolean isInvalid(String message){

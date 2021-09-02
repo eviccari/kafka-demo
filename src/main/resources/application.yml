@@ -11,6 +11,7 @@ app:
     params:
       kafka:
         bootstrapAddress: localhost:9092
+        groupId: businessId
         topics:
           businessTopic: business-topic
 
