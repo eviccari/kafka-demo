@@ -37,6 +37,7 @@ public class BusinessEntityController extends SimpleController{
         businessEntity.setId(payload.getId());
         businessEntity.setDescription(payload.getDescription());
         businessEntity.setVersion(payload.getVersion());
+        businessEntity.setWithInternalServerError(payload.getWithInternalServerError());
 
         var result = kafkaPublisherService.sendWithSynchronous(BusinessEntity.BUSINESS_TOPIC, businessEntity.toString());
         return SimpleResponseBody.build(

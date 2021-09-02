@@ -2,6 +2,7 @@ package com.viccari.learning.kafka_demo.services;
 
 import com.viccari.learning.kafka_demo.exceptions.InternalServerErrorException;
 import com.viccari.learning.kafka_demo.exceptions.UnprocessableEntityException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.KafkaException;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -13,6 +14,7 @@ import javax.servlet.ServletException;
 import java.util.ArrayList;
 
 @Service
+@Slf4j
 public class KafkaPublisherService {
 
     @Autowired
