@@ -27,19 +27,19 @@ public class BusinessConsumerService {
     KafkaPublisherService kafkaPublisherService;
 
 
-    @KafkaListener(topics = "business-topic", groupId = "groupId")
+    @KafkaListener(topics = "business-topic", groupId = "businessConsumerGroupId")
     public void businessTopicListener(String message) throws UnprocessableEntityException, BadRequestException, InternalServerErrorException {
 
         try {
 
             var businessEntity = new ObjectMapper().readValue(message, BusinessEntity.class);
 
-            try {
+//            try {
                 businessEntity.setReceivedAt(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
                 businessEntityService.doProcess(businessEntity);
-            }catch (InternalServerErrorException ise){
+//            }catch (InternalServerErrorException ise){
                 kafkaPublisherService.sendWithSynchronous("business-topic-retry-01", businessEntity.toString());
-            }
+//            }
 
         }catch (JsonProcessingException jpe){
             throw new BadRequestException(jpe.getMessage());

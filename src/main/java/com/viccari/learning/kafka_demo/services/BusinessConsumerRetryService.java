@@ -15,13 +15,13 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class BusinessConsumerRetryService {
 
-    @Autowired
+/*    @Autowired
     BusinessEntityService businessEntityService;
 
     @Autowired
     KafkaPublisherService kafkaPublisherService;
 
-    @KafkaListener(topics = "business-topic-retry-01", groupId = "retry01")
+    @KafkaListener(topics = "business-topic-retry-01", groupId = "businessConsumerGroupId")
     public void businessTopicListenerRetry01(String message) throws UnprocessableEntityException, BadRequestException, InternalServerErrorException {
         try {
 
@@ -42,7 +42,7 @@ public class BusinessConsumerRetryService {
         }
     }
 
-    @KafkaListener(topics = "business-topic-retry-02", groupId = "retry02")
+    @KafkaListener(topics = "business-topic-retry-02", groupId = "businessConsumerGroupId")
     public void businessTopicListenerRetry02(String message) throws UnprocessableEntityException, BadRequestException, InternalServerErrorException {
         try {
 
@@ -63,7 +63,7 @@ public class BusinessConsumerRetryService {
         }
     }
 
-    @KafkaListener(topics = "business-topic-retry-03", groupId = "retry03")
+    @KafkaListener(topics = "business-topic-retry-03", groupId = "businessConsumerGroupId")
     public void businessTopicListenerRetry03(String message) throws UnprocessableEntityException, BadRequestException, InternalServerErrorException {
         try {
 
@@ -84,5 +84,7 @@ public class BusinessConsumerRetryService {
             throw new InternalServerErrorException(ie.getMessage());
         }
     }
+
+ */
 
 }
